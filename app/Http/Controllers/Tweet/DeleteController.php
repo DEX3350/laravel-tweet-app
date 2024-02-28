@@ -21,8 +21,8 @@ class DeleteController extends Controller
             throw new AccessDeniedHttpException();
         }
         $tweet = Tweet::where('id', $tweetId)->firstOrFail();
-        $tweet->delete();
-        return redirect()
+        $tweetService->deleteTweet($tweetId);
+            return redirect()
             ->route('tweet.index')
             ->with('feedback.success', "つぶやきを削除しました");
     }
